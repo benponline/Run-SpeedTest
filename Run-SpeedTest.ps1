@@ -1,5 +1,3 @@
-# Run speedtest.exe from the commandline and accept the user agreement before the script will work correctly.
-
 $workingDirectory = ".\speedtest"
 $tempFilePath = "$workingDirectory\temp.csv"
 $speedTestFilePath = "$workingDirectory\speedtest.exe"
@@ -10,21 +8,20 @@ if((Test-Path -Path $workingDirectory) -eq $false){
 }
 
 #Download and prepare Ookla SpeedTest application for current operating system. 
-
 If($IsWindows -eq $true){
     if((Test-Path -Path $speedTestFilePath) -eq $false){
         Invoke-WebRequest -Uri https://bintray.com/ookla/download/download_file?file_path=ookla-speedtest-1.0.0-win64.zip -OutFile .\speedtest\ookla.zip;
         Expand-Archive -Path .\speedtest\ookla.zip -DestinationPath .\speedtest;
         Remove-Item -Path .\speedtest\ookla.zip -Force;
     }
-}elseif ($IsLinux -eq $true){
+}elseif($IsLinux -eq $true){
     if((Get-Command "speedtest" -ErrorAction SilentlyContinue) -eq $false){
         Invoke-WebRequest -Uri https://bintray.com/ookla/rhel/rpm -OutFile ./speedtest/bintray-ookla-rhel.repo
         Move-Item -Path ./speedtest/bintray-ookla-rhel.repo -Destination /etc/yum.repos.d/
         yum install -y speedtest
     }
 }else{
-    Write-Host "This operating system is not supported. Script closing."
+    Write-Host "This operating system is not supported. Stopping script."
     return
 }
 
