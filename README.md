@@ -9,12 +9,12 @@ The script was written and tested with PowerShell Core.
 ## Install PowerShell Core
 1. Download the lastest Long Term Support version of PowerShell Core at https://github.com/powershell/powershell.
 2. Install PowerShell Core.
- - 
 
 ## How to use
 1. Download the Run-SpeedTest.ps1 file.
-2. Open your Downloads folder or the directory you saved the file to.
-5. Open your version of PowerShell and run the following command: 
+2. Open PowerShell and run the following command: 
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
-6. This will allow PowerShell to read the contents of the module.
-7. Open a new PowerShell session and you are good to go.
+3. This will allow PowerShell to run the script.
+4. Navigate to the directory where Run-SpeedTest.ps1 is located.
+ - You can use `Set-Location` for this.
+5. Use the command `.\Run-SpeedTest.ps1` to run the script. 
