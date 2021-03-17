@@ -17,3 +17,12 @@ The script was written and tested with PowerShell Core.
 3. This will allow PowerShell to run the script.
 4. Navigate to the directory where Run-SpeedTest.ps1 is located. You can use `Set-Location` for this.
 5. Use the command `.\Run-SpeedTest.ps1` to run the script. 
+
+## Results
+DateTime          : 2021-03-17 11:28:10
+ServerName        : Whitesky Communications LLC - Atlanta, GA
+ServerID          : 8169
+DownLoadMBPS      : 95.8
+UpLoadMBPS        : 128.29
+LatencyMS         : 3.56
+PacketLossPercent : 2
