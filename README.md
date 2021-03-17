@@ -19,6 +19,8 @@ The script was written and tested with PowerShell Core.
 5. Use the command `.\Run-SpeedTest.ps1` to run the script. 
 
 ## Results
+An object with the following properties will be returned.
+
 DateTime          : 2021-03-17 11:28:10
 ServerName        : Whitesky Communications LLC - Atlanta, GA
 ServerID          : 8169
