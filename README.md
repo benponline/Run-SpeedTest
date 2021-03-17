@@ -21,6 +21,7 @@ The script was written and tested with PowerShell Core.
 ## Results
 An object with the following properties will be returned.
 
+```
 DateTime          : 2021-03-17 11:28:10
 ServerName        : Whitesky Communications LLC - Atlanta, GA
 ServerID          : 8169
@@ -28,3 +29,4 @@ DownLoadMBPS      : 95.8
 UpLoadMBPS        : 128.29
 LatencyMS         : 3.56
 PacketLossPercent : 2
+```
