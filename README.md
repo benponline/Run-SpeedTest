@@ -15,6 +15,5 @@ The script was written and tested with PowerShell Core.
 2. Open PowerShell and run the following command: 
 `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned`
 3. This will allow PowerShell to run the script.
-4. Navigate to the directory where Run-SpeedTest.ps1 is located.
- - You can use `Set-Location` for this.
+4. Navigate to the directory where Run-SpeedTest.ps1 is located. You can use `Set-Location` for this.
 5. Use the command `.\Run-SpeedTest.ps1` to run the script. 
