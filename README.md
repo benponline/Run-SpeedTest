@@ -1,6 +1,6 @@
 # Run-SpeedTest
 
-This script measures the download and upload speeds a computer has from the interent. It downloads the Ookla SpeedTest application, runs it, and returns an object with the results of the speed test. 
+This script measures the download and upload speeds a computer has to the internet. It downloads the Ookla SpeedTest application, runs it, and returns an object with the results of the speed test. 
 
 This script creates a directory at the location that it is run from to store the application and some other files that are generated. The script deletes this diectory at its completion. 
 
