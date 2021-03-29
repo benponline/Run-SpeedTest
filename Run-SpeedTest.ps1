@@ -1,10 +1,15 @@
-$workingDirectory = ".\speedtest"
+$speedTestDirectory = ".\speedtest"
+$workingDirectory = ".\temp"
 $tempFilePath = "$workingDirectory\temp.csv"
-$speedTestFilePath = "$workingDirectory\speedtest.exe"
+$speedTestFilePath = "$speedTestDirectory\speedtest.exe"
 
-#Checking for directory to place files required for the script.
-if((Test-Path -Path $workingDirectory) -eq $false){
+#Checking for directories to place files required for the script.
+if((Test-Path -Path $speedTestDirectory) -eq $false){
     New-Item -Path ".\" -Name "speedtest" -ItemType "directory" | Out-Null
+}
+
+if((Test-Path -Path $workingDirectory) -eq $false){
+    New-Item -Path ".\" -Name "temp" -ItemType "directory" | Out-Null
 }
 
 #Download and prepare Ookla SpeedTest application for current operating system. 
@@ -30,9 +35,9 @@ $job = Start-Job -ScriptBlock {
     param($jobTempFilePath)
 
     if(Test-Path -Path $jobTempFilePath){
-        $output = .\speedtest\speedtest.exe --accept-license -f csv
+        $output = .\speedtest\speedtest.exe --accept-license --format=csv
     }else{
-        $output = .\speedtest\speedtest.exe -f csv --output-header
+        $output = .\speedtest\speedtest.exe --format=csv --output-header
     }
 
     Add-Content -Path $jobTempFilePath -Value $output
@@ -51,10 +56,10 @@ $resultsFiltered = [PSCustomObject]@{
     DateTime = (Get-Date -Format "yyyy-MM-dd HH:mm:ss").ToString()
     ServerName = $results."server name"
     ServerID = $results."server id"
-    DownLoadMBPS = [math]::Round($results."download bytes" / 1MB, 2)
-    UpLoadMBPS = [math]::Round($results."upload bytes" / 1MB, 2)
-    LatencyMS = [math]::Round($results.latency, 2)
-    PacketLossPercent = [math]::Round($results."packet loss" -as [int], 2)
+    DownLoadMbps = ($results."download" / 1MB * 8)
+    UpLoadMbps = ($results."upload" / 1MB * 8)
+    LatencyMS = ($results.latency)
+    PacketLossPercent = ($results."packet loss")
 }
 
 Remove-Item -Path $workingDirectory -Recurse -Force
