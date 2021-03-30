@@ -56,9 +56,9 @@ $resultsFiltered = [PSCustomObject]@{
     DateTime = (Get-Date -Format "yyyy-MM-dd HH:mm:ss").ToString()
     ServerName = $results."server name"
     ServerID = $results."server id"
-    DownLoadMbps = ($results."download" / 1MB * 8)
-    UpLoadMbps = ($results."upload" / 1MB * 8)
-    LatencyMS = ($results.latency)
+    DownLoadMbps = [math]::Round(($results."download" / 1MB * 8), 2)
+    UpLoadMbps = [math]::Round(($results."upload" / 1MB * 8), 2)
+    LatencyMS = [math]::Round(($results.latency), 2)
     PacketLossPercent = ($results."packet loss")
 }
 
